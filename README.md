@@ -2,11 +2,6 @@
 
 Green parcel delivery is a python project aiming at optimizing the placement of pick-up stations and minimizing the routes in between their positions. 
 
-<img src="https://gitlab.com/jzenkner/greenpickup-mtp/-/raw/Wiki/readMepcitureofpositions.png" alt="Image of recommended pick-up stations by the algorithm" width="400">
-
-_Example of pick-up station placement recommendations by the reinforcement learning model._
- 
-
 ## Installation
 There are two options to use the green parcel delivery project. It can be used out of the box with the given executable or by loading and using the given python library. The requirements and installation possibilities are presented below 
 
@@ -28,12 +23,6 @@ Using the library allows for full customization of the given python library. Thi
 Load in the relevant libraries into the development surroundings. E.g. for frontend development the frontend data or for reinforcement development the reinforcement data.
 Make sure that the required libraries are successfully installed.
 Modify the project to your liking and then run it by using the MainPPO.py file. 
-
-
-<img src="https://gitlab.com/jzenkner/greenpickup-mtp/-/raw/Wiki/readMefeatureexample.png" alt="Image of considered features by the algorithm." width="400">
-
-_Example of features considered by the reinforcement learning model._
-
 
 ## Usage
 - Data generation: The project allows for the generation of static and dynamic synthetic data for the city of Stuttgart, Germany. 
