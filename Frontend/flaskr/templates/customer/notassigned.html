@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+
+<!-- Navigation Menu -->
+<div class="topnav" id="myTopnav">
+  <a href="{{ url_for('auth.login') }}"><i class="fas fa-home"></i> Start</a>
+  <a href="{{ url_for('customer.projectsite') }}"><i class="fas fa-leaf"></i> Green Pickup</a>
+  <a class="no-hover"><i class="fas fa-clock "></i> {{ current_time }}</a>
+  <a class="no-hover"><i class="fas fa-user "></i> Hello {{ g.user['id'] }}!</a>
+  {% if g.user %}
+    <a href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+  {% else %}
+    <a href="{{ url_for('auth.login') }}"><i class="fas fa-sign-in-alt"></i> Log In</a>
+  {% endif %}
+  <a href="javascript:void(0);" class="icon" onclick="toggleNav()"><i class="fas fa-bars"></i></a>
+</div> 
+  
+<!-- Content Container -->
+<div class="container" id="container">
+  <h2>Select a pickup location</h2>
+
+  <!-- Selected filters -->
+  {% for filter in get_flashed_messages(category_filter='filter') %}
+    <div class="filter">{{ filter }}</div>
+  {% endfor %}
+
+  <!-- Map -->
+  <div id ="map-container">
+    {{ map|safe }}
+  </div>
+  <br>
+
+  <!-- Buttons -->
+  <div>
+    <button id="toggle_filter">Filter locations</button>
+    <button onclick="location.href='{{ url_for('customer.assignedsite') }}'">Submit my choice</button>
+  </div>
+
+  <!-- Error Messages -->
+  {% for error_message in get_flashed_messages(category_filter='error') %}
+      <div class="flash">{{ error_message }}</div>
+  {% endfor %}
+  
+  <!-- Filter Container-->
+  <div id="filter_container" style="display: none;">
+    <form id="filter_form" method="POST">
+      <!-- Date selection -->
+      <div class="custom-dropdown">
+        <label for="selected_date">Select a date:</label>
+        <input type="text" id="selected_date" name="selected_date">
+      </div>
+      <!-- Time selection-->
+      <div class="custom-dropdown">
+        <label for="selected_time">Select a time:</label> <br>
+        <select id="selected_time" name="selected_time">
+          <option value="">-</option>
+          {% for time in filter_times %}
+            <option value="{{ time }}">{{ time }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <!-- Area selection -->
+      <div class="custom-dropdown">
+        <label for="selected_area">Choose an area:</label><br>
+        <select id="selected_area" name="selected_area">
+          <option value="">-</option>
+          {% for area in areas %}
+            <option value="{{ area }}">{{ area }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <!-- Submit Button-->
+      <button id="filter_button" type="submit">Filter / Reset</button>
+    </form>
+  </div>
+  <br>
+</div>
+    
+<script>
+  $(function() {
+      //jQuery init for selected_date as datepicker
+      $("#selected_date").datepicker({
+        dateFormat: "yy-mm-dd"
+      });
+
+      // Open filter area
+      $("#toggle_filter").click(function() {
+          $("#filter_container").toggle();
+      });
+  });
+</script>
+
+{% endblock %}

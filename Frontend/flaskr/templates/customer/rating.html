@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+
+<!-- Navigation Menu -->
+<div class="topnav" id="myTopnav">
+  <a href="{{ url_for('auth.login') }}"><i class="fas fa-home"></i> Start</a>
+  <a href="{{ url_for('customer.projectsite') }}"><i class="fas fa-leaf"></i> Green Pickup</a>
+  <a class="no-hover"><i class="fas fa-clock "></i> {{ current_time }}</a>
+  <a class="no-hover"><i class="fas fa-user "></i> Hello {{ g.user['id'] }}!</a>
+  {% if g.user %}
+    <a href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+  {% else %}
+    <a href="{{ url_for('auth.login') }}"><i class="fas fa-sign-in-alt"></i> Log In</a>
+  {% endif %}
+    <a href="javascript:void(0);" class="icon" onclick="toggleNav()"><i class="fas fa-bars"></i></a>
+</div>
+
+<!-- Content Container -->
+<div class="container" id="container">
+  <h2>Thank you for picking up your parcel!</h2>
+  <br>
+  <p style="color: #106650; font-size: 17px;">Your Green Pickup saved on average 0.6 kg of CO<sub>2</sub> emissions <i class="fas fa-leaf"></i></p>
+  
+  <!-- Feedback form-->
+  <form method="post" class="feedback-form">
+
+    <!-- Star rating -->
+    <label for="rating" style="margin-top: 20px;">Please rate the location of the pickup station:</label>
+    <br>
+    <div class="star-rating">
+      <input type="radio" id="star5" name="rating" value="5">
+      <label for="star5"></label>
+      <input type="radio" id="star4" name="rating" value="4">
+      <label for="star4"></label>
+      <input type="radio" id="star3" name="rating" value="3">
+      <label for="star3"></label>
+      <input type="radio" id="star2" name="rating" value="2">
+      <label for="star2"></label>
+      <input type="radio" id="star1" name="rating" value="1">
+      <label for="star1"></label>
+    </div>
+
+    <!-- Text Review -->
+    <div style="margin-top: 20px;">
+      <label for="review">Optional Review:</label>
+      <br>
+      <textarea id="review" name="review" style="width: 400px;" onclick="clearDefaultValue()">Further Feedback</textarea>
+      <br>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" style="margin-top: 20px;">Submit</button>
+    <br>
+
+    <!-- Error messages -->
+    {% for message in get_flashed_messages(category_filter='error') %}
+				<div class="flash">{{ message }}</div>
+		{% endfor %}
+  </form>
+
+</div>
+
+<script>
+  // Function for Navigation Menu
+  function toggleNav() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+  // Function for Text Review
+  function clearDefaultValue() {
+    var textarea = document.getElementById("review");
+    if (textarea.value === "Further Feedback") {
+      textarea.value = "";
+    }
+  }
+</script>
+
+{% endblock %}

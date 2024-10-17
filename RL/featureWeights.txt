@@ -1,0 +1,21 @@
+Info: This file contains the feature weights that can be used for the algorithms. The real number at the start of each line will be used as the weight for the feature that is stated after the number on the same line. Please note that only real numbers in the format x.y and only the first number on the line before the comma  can be read.
+0, cell_id
+1, population
+1, traffic
+10, postal(Increase to 20)
+10, higher_education
+10, services
+20, parking
+10, recreational
+10, public_buildings
+-100, obstructions
+10, transportation
+5, healthcare
+10, charging_station
+10, industrial
+10, commercial
+10, residential
+10, office
+-100, nature
+5, house
+20, supermarket

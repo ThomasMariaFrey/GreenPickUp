@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Navigation Menu -->
+<div class="topnav" id="myTopnav">
+    <a class="no-hover">Green Parcel Pickup in Stuttgart</a>
+    <a href="{{ url_for('customer.projectsite') }}"><i class="fas fa-leaf"></i> Green Pickup Project Website </a>
+    <a href="https://www.uni-mannheim.de/en/ines/teaching/european-master-team-project/project-route-planning-tool-for-green-parcel-delivery/"><i class="fas fa-globe"></i> EMTP 2023 @ InES</a>
+</div>
+
+<!-- Content Container-->
+<div class="container" id="container">
+
+    <!-- Left Container: Login Form-->
+    <div class="form-container sign-in-container">
+        <form id="sign-in" method="post">
+            <label for="order_nr">User ID:</label>
+            <input name="order_nr" id="order_nr" required>
+            <br>
+            <!-- User Type Selection -->
+            <div>
+                <div class="radio-container">
+                    <input type="radio" id="customer" name="option_user" value="customer" checked="checked" required>
+                    <label for="customer">Customer</label>
+                </div>
+                
+                <div class="radio-container">
+                    <input type="radio" id="deliverer" name="option_user" value="deliverer" required>
+                    <label for="deliverer" style="size:10%">Deliverer</label>
+                </div>
+            </div>
+            <!-- Error Messages -->
+            {% for message in get_flashed_messages(category_filter='error') %}
+                <div class="flash">{{ message }}</div>
+            {% endfor %}
+            <br>
+            <!-- Submit Button -->
+            <input type="submit" class= "ghost" style="background-color:#37a287" value="Log In">
+        </form>
+    </div>
+
+    <!-- Right Container -->
+    <div class="overlay-container">
+        <div class="overlay">
+            <!-- Learn More Info -->
+            <div class="overlay-panel overlay-left">
+                <h1>Green is smart!</h1>
+                <p>We aim to deliver parcels using mobile pick-up stations. Customers will be able to pick up their orders at the places that they already frequent anayways. This will reduce traffic flow and emission as the pick-up stations will move with the populace. </p>
+                <button class="wide" id="signIn">Go Back</button>
+            </div>
+            <!-- Login Version -->
+            <div class="overlay-panel overlay-right">
+                <h1>What is this?</h1>
+                <p>The Green parcel delivery project is about delivering a smart alternative to classic pick up stations and home delivery of parcels. <br> To learn more about the green parcel delivery project click the button below.</p>
+                <button class="wide" id="signUp">Learn more</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Learn More Page -->
+    <div class="form-container sign-up-container">
+        <form action="#">
+            <br>
+            <br>
+            <p class="wide" style="background-color:#37a287">Sustainability</p>
+            <p class="centered-text">by reducing the carbon emissions caused by delivery vehicles</p>
+            <p class="wide" style="background-color:#9ebb64">Decentralized Pick-Up System</p>
+            <p class="centered-text">making detours no longer necessary to pick up ones parcel</p>
+            <p class="wide" style="background-color:#ee9733">Zero-Emission Delivery</p>
+            <p class="centered-text">through the usage of electric bicycles for the movement of the mobile pick up stations</p>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Functionality to switch pages
+    signUpButton = document.getElementById('signUp');
+    signInButton = document.getElementById('signIn');
+    container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+</script>
+
+{% endblock %}
+
+{% block footer %}
+<footer>
+	<p>
+		Created by Alicia Böhret, Daniel Hostadt, David Svistea, Rares Rahaian, Michael Klassen and Thomas Frey within their master team project. 
+	</p>
+</footer>
+{% endblock %}

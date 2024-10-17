@@ -1,0 +1,21 @@
+Info: This file contains the distance weights that can be used for the algorithms. The real number at the start of each line will be used as the weight for the feature that is stated after the number on the same line. Please note that only real numbers in the format x.y and only the first number on the line before the comma  can be read.
+0, cell_id
+0.1, population
+0.1, traffic
+0.1, postal
+0.1, higher_education
+0.1, services
+0.1, parking
+0.1, recreational
+0.1, public_buildings
+0.1, obstructions
+0.1, transportation
+0.1, healthcare
+0.1, charging_station
+0.1, industrial
+0.1, commercial
+0.1, residential
+0.1, office
+0.1, nature
+0.1, house
+0.1, supermarket

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+
+<!-- Navigation Menu -->
+<div class="topnav" id="myTopnav">
+  <a href="{{ url_for('auth.login') }}"><i class="fas fa-home"></i> Start</a>
+  <a href="{{ url_for('customer.projectsite') }}"><i class="fas fa-leaf"></i> Green Pickup</a>
+  <a class="no-hover"><i class="fas fa-clock "></i> {{ current_time }}</a>
+  <a class="no-hover"><i class="fas fa-user "></i> Hello {{ g.user['id'] }}!</a>
+  {% if g.user %}
+    <a href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+  {% else %}
+    <a href="{{ url_for('auth.login') }}"><i class="fas fa-sign-in-alt"></i> Log In</a>
+  {% endif %}
+  <a href="javascript:void(0);" class="icon" onclick="toggleNav()"><i class="fas fa-bars"></i></a>
+</div>
+
+<!-- Content Container-->
+<div class="container" id="container">
+  <h2>Your order is on the way!</h2>
+  <p>Your parcel is going to be delivered here on the {{ g.user['placement_date']}}. For more information click on the locations.</p>
+
+  <!-- Map -->
+  <div id ="map-container">
+      {{ map|safe }}
+  </div>
+  <br>
+
+  <!-- Buttons -->
+  <div>
+    <button onclick="checkAndRedirect('{{ url_for('customer.openstation') }}')"> &#x1F510; Open Pickup Station</button>
+    <button onclick="location.href='{{ url_for('customer.deleteplacement') }}'">Delete placement</button>
+    <button type="button" id="help-button" onclick="showHelp()">Get help</button>
+  </div>
+
+  <!-- Error Messages -->
+  {% for message in get_flashed_messages(category_filter='error') %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  <br>
+
+</div>
+
+
+<script>
+  // Function for Navigation Menu
+  function toggleNav() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+
+  // Function to confirm and open the pickup station
+  function checkAndRedirect(url) {
+    var result = confirm("Are you sure you want to continue?");
+    if (result) {
+      window.location.href = url;
+    } 
+  }
+
+  // Function to get show help window
+  function showHelp() {
+    var phoneNumber = "+49 800 3131245"; // Fictional customer support phone number
+    var message = "Please contact customer support at " + phoneNumber + " to report any issues.";
+    alert(message);
+  }
+
+</script>
+
+
+{% endblock %}

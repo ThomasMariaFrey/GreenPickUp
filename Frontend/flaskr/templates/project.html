@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>Green Pick Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='project_style.css') }}">
+    <!--Icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Green Pick Up</h1>
+        <h2>Developing a Smart Route Planning Tool</h2>
+        <hr>
+        <nav>
+            <a class="topnav" href="#About"><i class="fas fa-info-circle"></i> About</a>
+            <a class= "topnav" href="#Timeline"><i class="fas fa-route"></i> Project Overview</a>
+            <a class= "topnav" href="#Team"><i class="fas fa-users"></i> Team</a>
+            <a class= "topnav" href="{{ url_for('auth.login') }}"><i class="fas fa-leaf"></i> Visit our App</a>
+        </nav>
+        <hr>
+    </header>
+    
+    <main>
+        <!-- First Container: Links Foto, rechts Einführungstext-->
+        <section>
+            <div class="container">
+                <div class="rounded-image">
+                    <img src="{{ url_for('static', filename='pictures/groupfoto.jpeg') }}" alt="Group Image" width="100%">
+                </div>
+                <div class="text">
+                    <h2>Green Pick Up - Project Website</h2>
+                    <h3>Documentation of a six month project of the University of Mannheim and Babeș-Bolyai University Cluj-Napoca</h3>
+                </div>
+            </div>
+        </section>
+        <hr>
+
+        <!-- Second Container: About -->
+        <section id="About">
+            <h2>About</h2>
+            <p id="project-description">
+                The scope of the Smart Route Planning Tool for Green Parcel Delivery Project is to develop and implement a smart parcel delivery system by using mobile pick-up stations.
+                Customers will be able to pick up their parcels at places they are already at such as their places of work, supermarkets or cultural facilities.
+                This yields a decrease in avoidable traffic, congestion and emissions.
+                We decided to introduce a Reinforcement Learning agent which places mobile pick-up stations at the best possible locations by various parameters.
+                Additionally, we implemented a route planning algorithm to obtain optimal routes between pick-up locations.
+                More information can be found <a class = "inline" href="https://www.uni-mannheim.de/en/ines/teaching/european-master-team-project/project-route-planning-tool-for-green-parcel-delivery/">here</a> at the Institute for Enterprise Systems at the University of Mannheim.
+            </p>
+            <p id="software-artefacts">
+                The project consists of several software artefacts:
+                First, we created synthetic data by simulating commuter routes through the project city of Stuttgart in Germany.
+                These data is merged with several other features which all play an important role in assessing places throughout the city whether they are a good choice for a mobile pick-up station.
+                Second, a smart agent makes decisions about where to place the pick-up stations throughout the day.
+                Third, a route planning tool picks the best routes between the places determined by the smart agent.
+                Fourth, a frontend application displays the placement decisions and the routes and integrates a database application for parcel delivery.
+            </p>
+        </section>
+        <hr>
+        
+        <!-- Third Container: Project Timeline -->
+        <section id="Timeline">
+            <h2>Project Timeline</h2>
+            <p id="Project-Timeline">
+                The project was taking place from February until August 2023 and we worked mostly remotely on this project. 
+                During the project, we had several milestones including literature research, creating a prototype, bringing all the components together and finally finetuning.
+                In March 2023, Mannheim students went on a visit to Cluj for a week and in July 2023, Cluj students went on a re-visit to Mannheim.
+                Here you can see some pictures from our working times and fun times together.
+            </p>
+            <h1>Cluj Trip - Mannheim Trip</h1>
+            <div class="container">
+                <div class="rounded-image">
+                    <img src="{{ url_for('static', filename='pictures/Cluj1.png') }}" alt="Cluj1" width="40%">
+                    <img src="{{ url_for('static', filename='pictures/Cluj2.png') }}" alt="Cluj2" width="40%">
+                </div>
+                <div class="text">
+                    <img src="{{ url_for('static', filename='pictures/MA1.png') }}" alt="Mannheim1" width="40%">
+                    <img src="{{ url_for('static', filename='pictures/MA2.png') }}" alt="Mannheim2" width="40%">
+                </div>
+            </div>
+        </section>
+        <hr>
+
+        <!-- Fourth Container: Our Team-->
+        <section id="Team">
+            <h2>Our Team</h2>
+            <p id="Our-Team">
+                Our Team consists of four students from the University of Mannheim and two students from the Babeș-Bolyai University Cluj-Napoca.
+                We worked together on this project remotely from February through August, 2023.
+                In March 2023, Mannheim students went on a visit to Cluj for a week and in July 2023, Cluj students went on a re-visit to Mannheim.
+            </p>
+            <p id="team-members">
+                <div class="member">
+                    <img class="round-image" src="{{ url_for('static', filename='pictures/Alicia.png') }}" alt="Alicia Böhret">
+                    <div class="member-info">
+                        <b>Alicia Böhret</b><br>
+                        Student of Mannheim Master in Data Science at University of Mannheim
+                    </div>
+                </div>
+                <div class="member">
+                    <img class="round-image" src="{{ url_for('static', filename='pictures/Thomas.jpeg') }}" alt="Thomas Frey">
+                    <div class="member-info">
+                        <b>Thomas Frey</b><br>
+                        Student of Mannheim Master in Data Science at University of Mannheim
+                    </div>
+                </div>
+                <div class="member">
+                    <img class="round-image" src="{{ url_for('static', filename='pictures/Daniel.png') }}" alt="Daniel Hostadt">
+                    <div class="member-info">
+                        <b>Daniel Hostadt</b><br>
+                        Student of Mannheim Master in Data Science at University of Mannheim
+                    </div>
+                </div>
+                <div class="member">
+                    <img class="round-image" src="{{ url_for('static', filename='pictures/Michael.png') }}" alt="Michael Klassen">
+                    <div class="member-info">
+                        <b>Michael Klassen</b><br>
+                        Student of Master Business Informatics at University of Mannheim
+                    </div>
+                </div>
+                <div class="member">
+                    <img class="round-image" src="{{ url_for('static', filename='pictures/Rares.png') }}" alt="Rareș Răhăian">
+                    <div class="member-info">
+                        <b>Rareș Răhăian</b><br>
+                        Student at Babeș-Bolyai University Cluj-Napoca
+                    </div>
+                </div>
+                <div class="member">
+                    <img class="round-image" src="{{ url_for('static', filename='pictures/David.png') }}" alt="David Sviștea">
+                    <div class="member-info">
+                        <b>David Sviștea</b><br>
+                        Student at Babeș-Bolyai University Cluj-Napoca
+                    </div>
+                </div>
+            </p>
+        </section>
+    </main>
+    <footer>
+        <p>
+            &copy; 2023 Smart Route Planning Tool for Green Parcel Delivery. |
+            <a class= "inline" href="{{ url_for('auth.login') }}">Visit Our App</a>
+        </p>
+    </footer>
+</body>
+</html>
